@@ -1,0 +1,16 @@
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\bin\Debug\TidldyWinksWordCup.exe.config
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\bin\Debug\TidldyWinksWordCup.exe
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\bin\Debug\TidldyWinksWordCup.pdb
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.csproj.AssemblyReference.cache
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.csproj.SuggestedBindingRedirects.cache
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\MainWindow.g.cs
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\App.g.cs
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup_MarkupCompile.cache
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup_MarkupCompile.lref
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\MainWindow.baml
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.g.resources
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.Properties.Resources.resources
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.csproj.GenerateResource.cache
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.csproj.CoreCompileInputs.cache
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.exe
+C:\Users\aliso\OneDrive\Documents\GitHub\TiddlyWinksWorldCup\TidldyWinksWordCup\TidldyWinksWordCup\obj\Debug\TidldyWinksWordCup.pdb

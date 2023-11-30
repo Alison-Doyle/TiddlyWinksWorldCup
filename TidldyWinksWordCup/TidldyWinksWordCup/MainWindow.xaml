@@ -1,0 +1,60 @@
+﻿<Window x:Class="TidldyWinksWordCup.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TidldyWinksWordCup"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!--Grid definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Grid children-->
+        <!--Page header-->
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">Tiddlywinks World Cup</Label>
+
+        <!--Teams information-->
+        <Grid Grid.Column="0" Grid.Row="1" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+
+            <Label FontSize="16">Teams</Label>
+            <ListBox x:Name="lbxTeams"  Grid.Row="1"></ListBox>
+        </Grid>
+
+        <!--Players information-->
+        <Grid Grid.Column="1" Grid.Row="1" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+
+            <Label FontSize="16">Players</Label>
+            <ListBox x:Name="lbxPlayers"  Grid.Row="1"></ListBox>
+        </Grid>
+
+        <!--Other information-->
+        <StackPanel Grid.Column="2" Grid.Row="1" Margin="8">
+            <!--Rating recorder-->
+            <Label FontSize="16">Rating</Label>
+            
+            <!--Result recorder-->
+            <Label FontSize="16">Record Reult</Label>
+            <Button x:Name="btnRecordWin" Margin="8">Win</Button>
+            <Button x:Name="btnRecordLoss" Margin="8">Loss</Button>
+            <Button x:Name="btnRecordDraw" Margin="8">Draw</Button>
+        </StackPanel>
+    </Grid>
+</Window>
