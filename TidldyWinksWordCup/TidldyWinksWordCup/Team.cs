@@ -13,7 +13,17 @@ namespace TidldyWinksWordCup
         public List<Player> Players { get; set; }
 
         // Constructors
+        public Team() {}
+
+        public Team(string name)
+        {
+            Name = name;
+        }
 
         // Methods
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }
