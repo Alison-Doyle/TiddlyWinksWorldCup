@@ -33,6 +33,18 @@ namespace TidldyWinksWordCup
             GetData();
         }
 
+        private void lbxTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DisplayTeamPlayers(lbxTeams.SelectedIndex);
+        }
+
+        private void DisplayTeamPlayers(int teamIndex)
+        {
+            ObservableCollection<Player> players = new ObservableCollection<Player>(teams[teamIndex].Players);
+
+            lbxPlayers.ItemsSource = players;
+        }
+
         private void GetData()
         {
             // Create sample teams
@@ -70,5 +82,6 @@ namespace TidldyWinksWordCup
             // Bind observable collection to listbox for user
             lbxTeams.ItemsSource = teams;
         }
+
     }
 }
