@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TidldyWinksWordCup"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <!--Grid definitions-->
         <Grid.ColumnDefinitions>
@@ -31,7 +31,7 @@
             </Grid.RowDefinitions>
 
             <Label FontSize="16">Teams</Label>
-            <ListBox x:Name="lbxTeams"  Grid.Row="1"></ListBox>
+            <ListBox x:Name="lbxTeams" Grid.Row="1" SelectionChanged="lbxTeams_SelectionChanged"></ListBox>
         </Grid>
 
         <!--Players information-->

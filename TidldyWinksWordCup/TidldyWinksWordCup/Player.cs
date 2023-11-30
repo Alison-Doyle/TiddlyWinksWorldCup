@@ -15,5 +15,9 @@ namespace TidldyWinksWordCup
         // Constructos
 
         // Methods
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }

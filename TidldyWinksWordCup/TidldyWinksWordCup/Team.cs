@@ -15,5 +15,9 @@ namespace TidldyWinksWordCup
         // Constructors
 
         // Methods
+        public override string ToString()
+        {
+            return $"{Name} - {Players.Count}";
+        }
     }
 }
