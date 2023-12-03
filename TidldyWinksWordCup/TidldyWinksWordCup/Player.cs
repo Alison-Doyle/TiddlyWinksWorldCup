@@ -15,9 +15,31 @@ namespace TidldyWinksWordCup
         // Constructos
 
         // Methods
+        int CalculatePoints()
+        {
+            int totalPoints = 0;
+
+            for (int i = 0; i < ResultRecord.Length; i++)
+            {
+                int pointsToAdd = 0;
+                if (ResultRecord[i] == 'W')
+                {
+                    pointsToAdd = 3;
+                }
+                else if (ResultRecord[i] == 'D')
+                {
+                    pointsToAdd = 1;
+                }
+
+                totalPoints += pointsToAdd;
+            }
+
+            return totalPoints;
+        }
+
         public override string ToString()
         {
-            return $"{Name}";
+            return $"{Name} - {CalculatePoints()}";
         }
     }
 }
