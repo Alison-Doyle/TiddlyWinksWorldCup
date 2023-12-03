@@ -83,5 +83,50 @@ namespace TidldyWinksWordCup
             lbxTeams.ItemsSource = teams;
         }
 
+        private void btnRecordWin_Click(object sender, RoutedEventArgs e)
+        {
+            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
+            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
+
+            if (teamIndex != -1 && playerIndex != - 1)
+            {
+                teams[teamIndex].Players[playerIndex].UpdateResultRecord('W');
+            }
+            else
+            {
+                MessageBox.Show("Please ensure you have selected a team and player", "Error");
+            }
+
+        }
+
+        private void btnRecordLoss_Click(object sender, RoutedEventArgs e)
+        {
+            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
+            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
+
+            if (teamIndex != -1 && playerIndex != -1)
+            {
+                teams[teamIndex].Players[playerIndex].UpdateResultRecord('L');
+            }
+            else
+            {
+                MessageBox.Show("Please ensure you have selected a team and player", "Error");
+            }
+        }
+
+        private void btnRecordDraw_Click(object sender, RoutedEventArgs e)
+        {
+            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
+            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
+
+            if (teamIndex != -1 && playerIndex != -1)
+            {
+                teams[teamIndex].Players[playerIndex].UpdateResultRecord('D');
+            }
+            else
+            {
+                MessageBox.Show("Please ensure you have selected a team and player", "Error");
+            }
+        }
     }
 }
