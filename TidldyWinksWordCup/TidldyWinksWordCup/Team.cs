@@ -34,7 +34,7 @@ namespace TidldyWinksWordCup
 
         public int CompareTo(Team other)
         {
-            return this.CalculateTotalTeamPoints().CompareTo(other.CalculateTotalTeamPoints());
+            return other.CalculateTotalTeamPoints().CompareTo(this.CalculateTotalTeamPoints());
         }
     }
 }
