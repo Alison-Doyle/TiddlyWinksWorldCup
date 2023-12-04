@@ -16,14 +16,17 @@
             // Cycle through each letter/result in result record
             for (int i = 0; i < ResultRecord.Length; i++)
             {
+                const char WinIndicator = 'W';
+                const char DrawIndicator = 'D';
+
                 int pointsToAdd = 0;
 
                 // Select appropriate points for result
-                if (ResultRecord[i] == 'W')
+                if (ResultRecord[i] == WinIndicator)
                 {
                     pointsToAdd = 3;
                 }
-                else if (ResultRecord[i] == 'D')
+                else if (ResultRecord[i] == DrawIndicator)
                 {
                     pointsToAdd = 1;
                 }
@@ -38,10 +41,10 @@
         {
             string updatedResultString = ResultRecord;
 
-            // Remove old result from string
+            // Remove oldest result from beginning of string
             updatedResultString = updatedResultString.Remove(0, 1);
 
-            // Add new result to string
+            // Add new result to end of string
             updatedResultString += newResult;
 
             ResultRecord = updatedResultString;
