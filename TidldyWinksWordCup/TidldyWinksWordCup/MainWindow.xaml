@@ -52,9 +52,9 @@
             
             <!--Result recorder-->
             <Label FontSize="16">Record Reult</Label>
-            <Button x:Name="btnRecordWin" Margin="8">Win</Button>
-            <Button x:Name="btnRecordLoss" Margin="8">Loss</Button>
-            <Button x:Name="btnRecordDraw" Margin="8">Draw</Button>
+            <Button x:Name="btnRecordWin" Margin="8" Click="btnRecordWin_Click">Win</Button>
+            <Button x:Name="btnRecordLoss" Margin="8" Click="btnRecordLoss_Click">Loss</Button>
+            <Button x:Name="btnRecordDraw" Margin="8" Click="btnRecordDraw_Click">Draw</Button>
         </StackPanel>
     </Grid>
 </Window>

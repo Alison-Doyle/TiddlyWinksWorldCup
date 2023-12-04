@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TidldyWinksWordCup
 {
-    internal class Team
+    internal class Team : IComparable<Team>
     {
         // Attributes
         public string Name { get; set; }
@@ -15,9 +15,26 @@ namespace TidldyWinksWordCup
         // Constructors
 
         // Methods
+        int CalculateTotalTeamPoints()
+        {
+            int totalPoints = 0;
+
+            foreach (Player player in Players)
+            {
+                totalPoints += player.CalculatePoints();
+            }
+
+            return totalPoints;
+        }
+
         public override string ToString()
         {
-            return $"{Name} - {Players.Count}";
+            return $"{Name} - {Players.Count} - {CalculateTotalTeamPoints()}";
+        }
+
+        public int CompareTo(Team other)
+        {
+            return other.CalculateTotalTeamPoints().CompareTo(this.CalculateTotalTeamPoints());
         }
     }
 }
