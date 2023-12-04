@@ -15,7 +15,7 @@ namespace TidldyWinksWordCup
         // Constructos
 
         // Methods
-        int CalculatePoints()
+        public int CalculatePoints()
         {
             int totalPoints = 0;
 

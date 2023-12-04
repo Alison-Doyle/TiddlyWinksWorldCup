@@ -21,7 +21,7 @@ namespace TidldyWinksWordCup
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Team> teams = new ObservableCollection<Team>();
+        private List<Team> teams = new List<Team>();
 
         public MainWindow()
         {
@@ -47,6 +47,7 @@ namespace TidldyWinksWordCup
 
         private void GetData()
         {
+
             // Create sample teams
             Team t1 = new Team() { Name = "France", Players = new List<Player>() };
             Team t2 = new Team() { Name = "Italy", Players = new List<Player>() };
@@ -79,8 +80,8 @@ namespace TidldyWinksWordCup
             teams.Add(t2);
             teams.Add(t3);
 
-            // Bind observable collection to listbox for user
-            lbxTeams.ItemsSource = teams;
+            // Update listbox
+            UpdateTeamsListBox();
         }
 
         private void btnRecordWin_Click(object sender, RoutedEventArgs e)
@@ -127,6 +128,16 @@ namespace TidldyWinksWordCup
             {
                 MessageBox.Show("Please ensure you have selected a team and player", "Error");
             }
+        }
+    
+        void UpdateTeamsListBox()
+        {
+            // Order teams in descending order by points
+            teams.Sort();
+
+            // Update listbox
+            lbxTeams.ItemsSource = null;
+            lbxTeams.ItemsSource = teams;
         }
     }
 }
