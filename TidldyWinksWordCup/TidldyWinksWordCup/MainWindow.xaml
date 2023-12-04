@@ -42,16 +42,21 @@
             </Grid.RowDefinitions>
 
             <Label FontSize="16">Players</Label>
-            <ListBox x:Name="lbxPlayers"  Grid.Row="1"></ListBox>
+            <ListBox x:Name="lbxPlayers"  Grid.Row="1" SelectionChanged="lbxPlayers_SelectionChanged"></ListBox>
         </Grid>
 
         <!--Other information-->
         <StackPanel Grid.Column="2" Grid.Row="1" Margin="8">
             <!--Rating recorder-->
             <Label FontSize="16">Rating</Label>
-            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image x:Name="imgStar1" Source="/starsolid.png"></Image>
+                <Image x:Name="imgStar2" Source="/starsolid.png"></Image>
+                <Image x:Name="imgStar3" Source="/starsolid.png"></Image>
+            </StackPanel>
+
             <!--Result recorder-->
-            <Label FontSize="16">Record Reult</Label>
+            <Label FontSize="16" Content="Record Result"/>
             <Button x:Name="btnRecordWin" Margin="8" Click="btnRecordWin_Click">Win</Button>
             <Button x:Name="btnRecordLoss" Margin="8" Click="btnRecordLoss_Click">Loss</Button>
             <Button x:Name="btnRecordDraw" Margin="8" Click="btnRecordDraw_Click">Draw</Button>
