@@ -46,12 +46,12 @@ namespace TidldyWinksWordCup
             if (teamIndex != -1 && playerIndex != -1)
             {
                 teams[teamIndex].Players[playerIndex].UpdateResultRecord('W');
+                DisplayPlayerRating();
             }
             else
             {
                 MessageBox.Show("Please ensure you have selected a team and player", "Error");
             }
-
         }
 
         private void btnRecordLoss_Click(object sender, RoutedEventArgs e)
@@ -62,6 +62,7 @@ namespace TidldyWinksWordCup
             if (teamIndex != -1 && playerIndex != -1)
             {
                 teams[teamIndex].Players[playerIndex].UpdateResultRecord('L');
+                DisplayPlayerRating();
             }
             else
             {
@@ -77,11 +78,17 @@ namespace TidldyWinksWordCup
             if (teamIndex != -1 && playerIndex != -1)
             {
                 teams[teamIndex].Players[playerIndex].UpdateResultRecord('D');
+                DisplayPlayerRating();
             }
             else
             {
                 MessageBox.Show("Please ensure you have selected a team and player", "Error");
             }
+        }
+
+        private void lbxPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DisplayPlayerRating();
         }
 
         private void DisplayTeamPlayers(int teamIndex)
@@ -93,7 +100,6 @@ namespace TidldyWinksWordCup
 
         private void GetData()
         {
-
             // Create sample teams
             Team t1 = new Team() { Name = "France", Players = new List<Player>() };
             Team t2 = new Team() { Name = "Italy", Players = new List<Player>() };
@@ -138,6 +144,55 @@ namespace TidldyWinksWordCup
             // Update listbox
             lbxTeams.ItemsSource = null;
             lbxTeams.ItemsSource = teams;
+        }
+    
+        private void DisplayPlayerRating()
+        {
+            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
+            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
+
+            // Make sure a team and player is selected
+            if (teamIndex != -1 && playerIndex != -1)
+            {
+                int playerPoints = teams[teamIndex].Players[playerIndex].CalculatePoints();
+
+                // Create star bitmaps
+                BitmapImage outlinedStar = new BitmapImage();
+                outlinedStar.BeginInit();
+                outlinedStar.UriSource = new Uri("/resources/staroutline.PNG", UriKind.Relative);
+                outlinedStar.EndInit();
+
+                BitmapImage filledStar = new BitmapImage();
+                filledStar.BeginInit();
+                filledStar.UriSource = new Uri("/resources/starsolid.PNG", UriKind.Relative);
+                filledStar.EndInit();
+
+                // Set appropriate amount of stars (Need to change all stars each time to prevent leaving artifacts of previous player)
+                if (playerPoints == 0)
+                {
+                    imgStar1.Source = outlinedStar;
+                    imgStar2.Source = outlinedStar;
+                    imgStar3.Source = outlinedStar;
+                }
+                else if ((playerPoints >= 1) && (playerPoints <= 5))
+                {
+                    imgStar1.Source = filledStar;
+                    imgStar2.Source = outlinedStar;
+                    imgStar3.Source = outlinedStar;
+                }
+                else if ((playerPoints >= 6) && (playerPoints <= 10))
+                {
+                    imgStar1.Source = filledStar;
+                    imgStar2.Source = filledStar;
+                    imgStar3.Source = outlinedStar;
+                }
+                else
+                {
+                    imgStar1.Source = filledStar;
+                    imgStar2.Source = filledStar;
+                    imgStar3.Source = filledStar;
+                }
+            }
         }
     }
 }
