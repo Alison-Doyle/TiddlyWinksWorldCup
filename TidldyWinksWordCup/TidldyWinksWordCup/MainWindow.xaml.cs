@@ -96,8 +96,8 @@ namespace TidldyWinksWordCup
     
         private void AddNewResultToPlayer(char result)
         {
-            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
-            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
+            int teamIndex = ValidateListBoxSelectedIndex(lbxTeams.SelectedIndex);
+            int playerIndex = ValidateListBoxSelectedIndex(lbxPlayers.SelectedIndex);
 
             if (teamIndex != -1 && playerIndex != -1)
             {
@@ -110,7 +110,14 @@ namespace TidldyWinksWordCup
             }
         }
 
-        void UpdateTeamsListBox()
+        private int ValidateListBoxSelectedIndex(int selectedIndex)
+        {
+            int index = selectedIndex == null ? -1 : selectedIndex;
+
+            return index;
+        }
+
+        private void UpdateTeamsListBox()
         {
             // Order teams in descending order by points
             teams.Sort();
@@ -122,8 +129,8 @@ namespace TidldyWinksWordCup
     
         private void DisplayPlayerRating()
         {
-            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
-            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
+            int teamIndex =  ValidateListBoxSelectedIndex(lbxTeams.SelectedIndex);
+            int playerIndex = ValidateListBoxSelectedIndex(lbxPlayers.SelectedIndex);
 
             // Make sure a team and player is selected
             if (teamIndex != -1 && playerIndex != -1)

@@ -50,9 +50,9 @@
             <!--Rating recorder-->
             <Label FontSize="16">Rating</Label>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image x:Name="imgStar1" Source="/starsolid.png"></Image>
-                <Image x:Name="imgStar2" Source="/starsolid.png"></Image>
-                <Image x:Name="imgStar3" Source="/starsolid.png"></Image>
+                <Image x:Name="imgStar1" Source="/Resources/staroutline.png"></Image>
+                <Image x:Name="imgStar2" Source="/Resources/staroutline.png"></Image>
+                <Image x:Name="imgStar3" Source="/Resources/staroutline.png"></Image>
             </StackPanel>
 
             <!--Result recorder-->
