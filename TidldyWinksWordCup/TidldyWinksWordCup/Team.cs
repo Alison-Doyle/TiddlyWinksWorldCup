@@ -18,7 +18,7 @@ namespace TidldyWinksWordCup
 
             foreach (Player player in Players)
             {
-                totalPoints += player.CalculatePoints();
+                totalPoints += player.Points;
             }
 
             return totalPoints;

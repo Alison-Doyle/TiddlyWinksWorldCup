@@ -5,38 +5,43 @@
         // Attributes
         public string Name { get; set; }
         public string ResultRecord { get; set; }
+        int _points;
+
+        // Properties
+        public int Points
+        {
+            get
+            {
+                int totalPoints = 0;
+
+                // Cycle through each letter/result in result record
+                for (int i = 0; i < ResultRecord.Length; i++)
+                {
+                    const char WinIndicator = 'W';
+                    const char DrawIndicator = 'D';
+
+                    int pointsToAdd = 0;
+
+                    // Select appropriate points for result
+                    if (ResultRecord[i] == WinIndicator)
+                    {
+                        pointsToAdd = 3;
+                    }
+                    else if (ResultRecord[i] == DrawIndicator)
+                    {
+                        pointsToAdd = 1;
+                    }
+
+                    totalPoints += pointsToAdd;
+                }
+
+                return totalPoints;
+            }
+        }
 
         // Constructos
 
         // Methods
-        public int CalculatePoints()
-        {
-            int totalPoints = 0;
-
-            // Cycle through each letter/result in result record
-            for (int i = 0; i < ResultRecord.Length; i++)
-            {
-                const char WinIndicator = 'W';
-                const char DrawIndicator = 'D';
-
-                int pointsToAdd = 0;
-
-                // Select appropriate points for result
-                if (ResultRecord[i] == WinIndicator)
-                {
-                    pointsToAdd = 3;
-                }
-                else if (ResultRecord[i] == DrawIndicator)
-                {
-                    pointsToAdd = 1;
-                }
-
-                totalPoints += pointsToAdd;
-            }
-
-            return totalPoints;
-        }
-
         public void UpdateResultRecord(char newResult)
         {
             string updatedResultString = ResultRecord;
@@ -52,7 +57,7 @@
 
         public override string ToString()
         {
-            return $"{Name} - {ResultRecord} - {CalculatePoints()}";
+            return $"{Name} - {ResultRecord} - {Points}";
         }
     }
 }

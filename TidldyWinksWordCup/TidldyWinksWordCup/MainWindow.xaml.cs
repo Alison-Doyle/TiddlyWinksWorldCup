@@ -135,7 +135,7 @@ namespace TidldyWinksWordCup
             // Make sure a team and player is selected
             if (teamIndex != -1 && playerIndex != -1)
             {
-                int playerPoints = teams[teamIndex].Players[playerIndex].CalculatePoints();
+                int playerPoints = teams[teamIndex].Players[playerIndex].Points;
 
                 // Create star bitmaps
                 BitmapImage outlinedStar = new BitmapImage();
