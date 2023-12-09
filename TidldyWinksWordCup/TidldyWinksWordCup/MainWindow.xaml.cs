@@ -26,7 +26,7 @@ namespace TidldyWinksWordCup
 
         private void lbxTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DisplayTeamPlayers(lbxTeams.SelectedIndex);
+            UpdatePlayersListBox(lbxTeams.SelectedIndex);
         }
 
         private void btnRecordWin_Click(object sender, RoutedEventArgs e)
@@ -49,10 +49,9 @@ namespace TidldyWinksWordCup
             DisplayPlayerRating();
         }
 
-        private void DisplayTeamPlayers(int teamIndex)
+        private void UpdatePlayersListBox(int teamIndex)
         {
-            ObservableCollection<Player> players = new ObservableCollection<Player>(teams[teamIndex].Players);
-
+            List<Player> players = new List<Player>(teams[teamIndex].Players);
             lbxPlayers.ItemsSource = players;
         }
 
@@ -103,6 +102,7 @@ namespace TidldyWinksWordCup
             {
                 teams[teamIndex].Players[playerIndex].UpdateResultRecord(result);
                 DisplayPlayerRating();
+                UpdatePlayersListBox(teamIndex);
             }
             else
             {
@@ -126,7 +126,7 @@ namespace TidldyWinksWordCup
             lbxTeams.ItemsSource = null;
             lbxTeams.ItemsSource = teams;
         }
-    
+
         private void DisplayPlayerRating()
         {
             int teamIndex =  ValidateListBoxSelectedIndex(lbxTeams.SelectedIndex);

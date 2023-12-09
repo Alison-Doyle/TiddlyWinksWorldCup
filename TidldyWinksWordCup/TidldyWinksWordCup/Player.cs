@@ -5,9 +5,6 @@
         // Attributes
         public string Name { get; set; }
         public string ResultRecord { get; set; }
-        int _points;
-
-        // Properties
         public int Points
         {
             get
