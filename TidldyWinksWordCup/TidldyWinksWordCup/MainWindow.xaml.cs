@@ -5,6 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
+// Link to GitHub Repo:
+// https://github.com/Alison-Doyle/TiddlyWinksWorldCup
+
 namespace TidldyWinksWordCup
 {
     /// <summary>
