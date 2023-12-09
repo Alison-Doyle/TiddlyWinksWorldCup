@@ -98,9 +98,12 @@ namespace TidldyWinksWordCup
             int teamIndex = ValidateListBoxSelectedIndex(lbxTeams.SelectedIndex);
             int playerIndex = ValidateListBoxSelectedIndex(lbxPlayers.SelectedIndex);
 
+            // Make sure there is an item slected in each listbox
             if (teamIndex != -1 && playerIndex != -1)
             {
                 teams[teamIndex].Players[playerIndex].UpdateResultRecord(result);
+
+                // Update UI to repersent changes
                 DisplayPlayerRating();
                 UpdatePlayersListBox(teamIndex);
             }
