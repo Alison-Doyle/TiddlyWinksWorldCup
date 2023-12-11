@@ -36,7 +36,17 @@
             }
         }
 
-        // Constructos
+        // Constructors
+        public Player ()
+        {
+
+        }
+
+        public Player (string name, string results)
+        {
+            Name = name;
+            ResultRecord = results;
+        }
 
         // Methods
         public void UpdateResultRecord(char newResult)

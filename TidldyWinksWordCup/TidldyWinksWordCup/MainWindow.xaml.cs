@@ -61,28 +61,28 @@ namespace TidldyWinksWordCup
         private void GetData()
         {
             // Create sample teams
-            Team t1 = new Team() { Name = "France", Players = new List<Player>() };
-            Team t2 = new Team() { Name = "Italy", Players = new List<Player>() };
-            Team t3 = new Team() { Name = "Spain", Players = new List<Player>() };
+            Team t1 = new Team("France", new List<Player>());
+            Team t2 = new Team("Italy", new List<Player>());
+            Team t3 = new Team("Spain", new List<Player>());
 
             // Create sample players and add them to appropriate team
-            Player p1 = new Player() { Name = "Marie", ResultRecord = "WWDDL" };
-            Player p2 = new Player() { Name = "Claude", ResultRecord = "DDDLW" };
-            Player p3 = new Player() { Name = "Antoine", ResultRecord = "LWDLW" };
+            Player p1 = new Player("Marie", "WWDDL");
+            Player p2 = new Player("Claude", "DDDLW");
+            Player p3 = new Player("Antoine", "LWDLW");
             t1.Players.Add(p1);
             t1.Players.Add(p2);
             t1.Players.Add(p3);
 
-            Player p4 = new Player() { Name = "Marco", ResultRecord = "WWDLL" };
-            Player p5 = new Player() { Name = "Giovanni", ResultRecord = "LLLLD" };
-            Player p6 = new Player() { Name = "Valentina", ResultRecord = "DLWWW" };
+            Player p4 = new Player("Marco", "WWDLL");
+            Player p5 = new Player("Giovanni", "LLLLD");
+            Player p6 = new Player("Valentina", "DLWWW");
             t2.Players.Add(p4);
             t2.Players.Add(p5);
             t2.Players.Add(p6);
 
-            Player p7 = new Player() { Name = "Maria", ResultRecord = "WWWWW" };
-            Player p8 = new Player() { Name = "Jose", ResultRecord = "LLLLL" };
-            Player p9 = new Player() { Name = "Pablo", ResultRecord = "DDDDD" };
+            Player p7 = new Player("Maria", "WWWWW");
+            Player p8 = new Player("Jose", "LLLLL");
+            Player p9 = new Player("Pablo", "DDDDD");
             t3.Players.Add(p7);
             t3.Players.Add(p8);
             t3.Players.Add(p9);

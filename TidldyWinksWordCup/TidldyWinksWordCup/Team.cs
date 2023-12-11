@@ -10,6 +10,16 @@ namespace TidldyWinksWordCup
         public List<Player> Players { get; set; }
 
         // Constructors
+        public Team ()
+        {
+
+        }
+
+        public Team(string name, List<Player> players)
+        {
+            Name = name;
+            Players = players;
+        }
 
         // Methods
         int CalculateTotalTeamPoints()
