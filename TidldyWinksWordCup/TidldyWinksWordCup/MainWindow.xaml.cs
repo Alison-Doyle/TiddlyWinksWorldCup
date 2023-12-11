@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+// Link to GitHub Repo:
+// https://github.com/Alison-Doyle/TiddlyWinksWorldCup
 
 namespace TidldyWinksWordCup
 {
@@ -35,55 +29,22 @@ namespace TidldyWinksWordCup
 
         private void lbxTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DisplayTeamPlayers(lbxTeams.SelectedIndex);
+            UpdatePlayersListBox(lbxTeams.SelectedIndex);
         }
 
         private void btnRecordWin_Click(object sender, RoutedEventArgs e)
         {
-            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
-            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
-
-            if (teamIndex != -1 && playerIndex != -1)
-            {
-                teams[teamIndex].Players[playerIndex].UpdateResultRecord('W');
-                DisplayPlayerRating();
-            }
-            else
-            {
-                MessageBox.Show("Please ensure you have selected a team and player", "Error");
-            }
+            AddNewResultToPlayer('W');
         }
 
         private void btnRecordLoss_Click(object sender, RoutedEventArgs e)
         {
-            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
-            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
-
-            if (teamIndex != -1 && playerIndex != -1)
-            {
-                teams[teamIndex].Players[playerIndex].UpdateResultRecord('L');
-                DisplayPlayerRating();
-            }
-            else
-            {
-                MessageBox.Show("Please ensure you have selected a team and player", "Error");
-            }
+            AddNewResultToPlayer('L');
         }
 
         private void btnRecordDraw_Click(object sender, RoutedEventArgs e)
         {
-            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
-            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
-
-            if (teamIndex != -1 && playerIndex != -1)
-            {
-                teams[teamIndex].Players[playerIndex].UpdateResultRecord('D');
-                DisplayPlayerRating();
-            }
-            else
-            {
-                MessageBox.Show("Please ensure you have selected a team and player", "Error");
-            }
+            AddNewResultToPlayer('D');
         }
 
         private void lbxPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,38 +52,37 @@ namespace TidldyWinksWordCup
             DisplayPlayerRating();
         }
 
-        private void DisplayTeamPlayers(int teamIndex)
+        private void UpdatePlayersListBox(int teamIndex)
         {
-            ObservableCollection<Player> players = new ObservableCollection<Player>(teams[teamIndex].Players);
-
+            List<Player> players = new List<Player>(teams[teamIndex].Players);
             lbxPlayers.ItemsSource = players;
         }
 
         private void GetData()
         {
             // Create sample teams
-            Team t1 = new Team() { Name = "France", Players = new List<Player>() };
-            Team t2 = new Team() { Name = "Italy", Players = new List<Player>() };
-            Team t3 = new Team() { Name = "Spain", Players = new List<Player>() };
+            Team t1 = new Team("France", new List<Player>());
+            Team t2 = new Team("Italy", new List<Player>());
+            Team t3 = new Team("Spain", new List<Player>());
 
             // Create sample players and add them to appropriate team
-            Player p1 = new Player() { Name = "Marie", ResultRecord = "WWDDL" };
-            Player p2 = new Player() { Name = "Claude", ResultRecord = "DDDLW" };
-            Player p3 = new Player() { Name = "Antoine", ResultRecord = "LWDLW" };
+            Player p1 = new Player("Marie", "WWDDL");
+            Player p2 = new Player("Claude", "DDDLW");
+            Player p3 = new Player("Antoine", "LWDLW");
             t1.Players.Add(p1);
             t1.Players.Add(p2);
             t1.Players.Add(p3);
 
-            Player p4 = new Player() { Name = "Marco", ResultRecord = "WWDLL" };
-            Player p5 = new Player() { Name = "Giovanni", ResultRecord = "LLLLD" };
-            Player p6 = new Player() { Name = "Valentina", ResultRecord = "DLWWW" };
+            Player p4 = new Player("Marco", "WWDLL");
+            Player p5 = new Player("Giovanni", "LLLLD");
+            Player p6 = new Player("Valentina", "DLWWW");
             t2.Players.Add(p4);
             t2.Players.Add(p5);
             t2.Players.Add(p6);
 
-            Player p7 = new Player() { Name = "Maria", ResultRecord = "WWWWW" };
-            Player p8 = new Player() { Name = "Jose", ResultRecord = "LLLLL" };
-            Player p9 = new Player() { Name = "Pablo", ResultRecord = "DDDDD" };
+            Player p7 = new Player("Maria", "WWWWW");
+            Player p8 = new Player("Jose", "LLLLL");
+            Player p9 = new Player("Pablo", "DDDDD");
             t3.Players.Add(p7);
             t3.Players.Add(p8);
             t3.Players.Add(p9);
@@ -136,7 +96,34 @@ namespace TidldyWinksWordCup
             UpdateTeamsListBox();
         }
     
-        void UpdateTeamsListBox()
+        private void AddNewResultToPlayer(char result)
+        {
+            int teamIndex = ValidateListBoxSelectedIndex(lbxTeams.SelectedIndex);
+            int playerIndex = ValidateListBoxSelectedIndex(lbxPlayers.SelectedIndex);
+
+            // Make sure there is an item slected in each listbox
+            if (teamIndex != -1 && playerIndex != -1)
+            {
+                teams[teamIndex].Players[playerIndex].UpdateResultRecord(result);
+
+                // Update UI to repersent changes
+                DisplayPlayerRating();
+                UpdatePlayersListBox(teamIndex);
+            }
+            else
+            {
+                MessageBox.Show("Please ensure you have selected a team and player before submitting a result", "Error");
+            }
+        }
+
+        private int ValidateListBoxSelectedIndex(int selectedIndex)
+        {
+            int index = selectedIndex == null ? -1 : selectedIndex;
+
+            return index;
+        }
+
+        private void UpdateTeamsListBox()
         {
             // Order teams in descending order by points
             teams.Sort();
@@ -145,16 +132,16 @@ namespace TidldyWinksWordCup
             lbxTeams.ItemsSource = null;
             lbxTeams.ItemsSource = teams;
         }
-    
+
         private void DisplayPlayerRating()
         {
-            int teamIndex = lbxTeams.SelectedIndex == null ? -1 : lbxTeams.SelectedIndex;
-            int playerIndex = lbxPlayers.SelectedIndex == null ? -1 : lbxPlayers.SelectedIndex;
+            int teamIndex =  ValidateListBoxSelectedIndex(lbxTeams.SelectedIndex);
+            int playerIndex = ValidateListBoxSelectedIndex(lbxPlayers.SelectedIndex);
 
             // Make sure a team and player is selected
             if (teamIndex != -1 && playerIndex != -1)
             {
-                int playerPoints = teams[teamIndex].Players[playerIndex].CalculatePoints();
+                int playerPoints = teams[teamIndex].Players[playerIndex].Points;
 
                 // Create star bitmaps
                 BitmapImage outlinedStar = new BitmapImage();

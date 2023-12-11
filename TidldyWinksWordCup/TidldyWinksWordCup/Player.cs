@@ -1,53 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TidldyWinksWordCup
+﻿namespace TidldyWinksWordCup
 {
     internal class Player
     {
         // Attributes
         public string Name { get; set; }
         public string ResultRecord { get; set; }
-
-        // Constructos
-
-        // Methods
-        public int CalculatePoints()
+        public int Points
         {
-            int totalPoints = 0;
-
-            // Cycle through each letter/result in result record
-            for (int i = 0; i < ResultRecord.Length; i++)
+            get
             {
-                int pointsToAdd = 0;
+                int totalPoints = 0;
 
-                // Select appropriate points for result
-                if (ResultRecord[i] == 'W')
+                // Cycle through each letter/result in result record
+                for (int i = 0; i < ResultRecord.Length; i++)
                 {
-                    pointsToAdd = 3;
-                }
-                else if (ResultRecord[i] == 'D')
-                {
-                    pointsToAdd = 1;
+                    const char WinIndicator = 'W';
+                    const char DrawIndicator = 'D';
+
+                    int pointsToAdd = 0;
+
+                    // Select appropriate points for result
+                    if (ResultRecord[i] == WinIndicator)
+                    {
+                        pointsToAdd = 3;
+                    }
+                    else if (ResultRecord[i] == DrawIndicator)
+                    {
+                        pointsToAdd = 1;
+                    }
+
+                    totalPoints += pointsToAdd;
                 }
 
-                totalPoints += pointsToAdd;
+                return totalPoints;
             }
-
-            return totalPoints;
         }
 
+        // Constructors
+        public Player ()
+        {
+
+        }
+
+        public Player (string name, string results)
+        {
+            Name = name;
+            ResultRecord = results;
+        }
+
+        // Methods
         public void UpdateResultRecord(char newResult)
         {
             string updatedResultString = ResultRecord;
 
-            // Remove old result from string
+            // Remove oldest result from beginning of string
             updatedResultString = updatedResultString.Remove(0, 1);
 
-            // Add new result to string
+            // Add new result to end of string
             updatedResultString += newResult;
 
             ResultRecord = updatedResultString;
@@ -55,7 +64,7 @@ namespace TidldyWinksWordCup
 
         public override string ToString()
         {
-            return $"{Name} - {ResultRecord} - {CalculatePoints()}";
+            return $"{Name} - {ResultRecord} - {Points}";
         }
     }
 }

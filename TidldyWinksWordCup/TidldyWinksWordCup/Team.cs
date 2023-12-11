@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TidldyWinksWordCup
 {
@@ -13,6 +10,16 @@ namespace TidldyWinksWordCup
         public List<Player> Players { get; set; }
 
         // Constructors
+        public Team ()
+        {
+
+        }
+
+        public Team(string name, List<Player> players)
+        {
+            Name = name;
+            Players = players;
+        }
 
         // Methods
         int CalculateTotalTeamPoints()
@@ -21,7 +28,7 @@ namespace TidldyWinksWordCup
 
             foreach (Player player in Players)
             {
-                totalPoints += player.CalculatePoints();
+                totalPoints += player.Points;
             }
 
             return totalPoints;
